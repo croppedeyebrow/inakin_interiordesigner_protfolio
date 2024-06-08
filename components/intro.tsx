@@ -5,7 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import { type } from "os";
 import React from "react";
-import { BsArrowRight } from "react-icons/bs";
+import {
+  BsEnvelope,
+  BsDribbble,
+  BsBehance,
+  BsPinterest,
+  BsFileEarmarkPdfFill,
+} from "react-icons/bs";
+import { HiDownload } from "react-icons/hi";
 
 export default function Intro() {
   return (
@@ -56,14 +63,51 @@ export default function Intro() {
         <span className="underline">고객이 행복한 공간을 만드는겁니다</span>
       </motion.p>
 
-      <div className="color text-black">
+      <motion.div
+        className="color text-black flex flex-col sm:flex-row items-center justify-center gap-2   font-semibold"
+        initial={{ opacity: 0, y: 100 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.2 }}
+      >
         <Link
           href="#contact"
-          className="bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 hover:bg-gray-800 transition-colors"
+          className="bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 hover:bg-gray-800 transition-colors transform transition duration-800 
+          hover:scale-110"
         >
-          Contact me here <BsArrowRight /> {""}
+          Contact me here <BsEnvelope />
         </Link>
-      </div>
+
+        <a
+          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
+        hover:scale-110 "
+        >
+          이력서 다운로드 <HiDownload />
+        </a>
+        <a
+          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
+        hover:scale-110 "
+        >
+          포트폴리오 다운로드 <BsFileEarmarkPdfFill />
+        </a>
+        <a
+          className="bg-white  p-4  text-gray-700 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
+        hover:scale-110 "
+        >
+          <BsDribbble />
+        </a>
+        <a
+          className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
+           hover:scale-110  "
+        >
+          <BsBehance />
+        </a>
+        <a
+          className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
+           hover:scale-110  "
+        >
+          <BsPinterest />
+        </a>
+      </motion.div>
     </section>
   );
 }

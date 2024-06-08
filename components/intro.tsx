@@ -50,7 +50,7 @@ export default function Intro() {
         </div>
       </div>
 
-      <motion.p
+      <motion.h1
         className="color text-black bm-10 mt-4 px-4 text-1xl font-medium leading-[1.6] sm:text-2xl top-10"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
@@ -61,7 +61,7 @@ export default function Intro() {
         <span className="font-bold">고객의 요구에 맞는 공간을 만들 때</span>{" "}
         보람을 느낍니다. 제 목표는 {""}{" "}
         <span className="underline">고객이 행복한 공간을 만드는겁니다</span>
-      </motion.p>
+      </motion.h1>
 
       <motion.div
         className="color text-black flex flex-col sm:flex-row items-center justify-center gap-2   font-semibold"
@@ -71,39 +71,55 @@ export default function Intro() {
       >
         <Link
           href="#contact"
-          className="bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 hover:bg-gray-800 transition-colors transform transition duration-800 
-          hover:scale-110"
+          className=" group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none font-medium mt-8 hover:bg-gray-800 transition-colors transform transition  
+          hover:scale-110 shadow-xl"
         >
-          Contact me here <BsEnvelope />
+          Contact me here{" "}
+          <BsEnvelope className=" opacity-70 group-hover:translate-x-1 transition" />
         </Link>
 
         <a
-          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
-        hover:scale-110 "
+          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
+        hover:scale-110  shadow-xl"
+          href="/CV.pdf"
+          download
         >
-          이력서 다운로드 <HiDownload />
+          이력서 다운로드{" "}
+          <HiDownload className=" opacity-60 group-hover:translate-y-1 transition" />
         </a>
         <a
-          className="bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
-        hover:scale-110 "
+          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
+        hover:scale-110 shadow-xl "
+          href="/PORTFOLIO.pdf"
+          download
         >
-          포트폴리오 다운로드 <BsFileEarmarkPdfFill />
+          포트폴리오 다운로드{" "}
+          <BsFileEarmarkPdfFill className="opacity-60 group-hover:translate-y-1 transition" />
         </a>
         <a
           className="bg-white  p-4  text-gray-700 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-        hover:scale-110 "
+        hover:scale-110 shadow-xl "
+          href="https://dribbble.com/"
+          target="_blank"
+          rel="noreferrer"
         >
           <BsDribbble />
         </a>
         <a
           className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-           hover:scale-110  "
+           hover:scale-110 shadow-xl "
+          href="https://www.behance.net"
+          target="_blank"
+          rel="noreferrer"
         >
           <BsBehance />
         </a>
         <a
           className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-           hover:scale-110  "
+           hover:scale-110 shadow-xl  "
+          href="https://kr.pinterest.com/"
+          target="_blank"
+          rel="noreferrer"
         >
           <BsPinterest />
         </a>

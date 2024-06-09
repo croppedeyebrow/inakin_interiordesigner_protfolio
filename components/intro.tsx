@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { type } from "os";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   BsEnvelope,
   BsDribbble,
@@ -13,10 +13,27 @@ import {
   BsFileEarmarkPdfFill,
 } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
+import { useInView } from "react-intersection-observer";
+import { useActiveSectionContext } from "@/context/active_section_context";
+import { useSectionInView } from "@/lib/hooks";
 
 export default function Intro() {
+  const { ref } = useSectionInView({ section: "Home" });
+  // const { ref, inView } = useInView({ threshold: 0.75 });
+  // const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
+
+  // useEffect(() => {
+  //   if (inView && Date.now() - timeOfLastClick > 1000) {
+  //     setActiveSection("Home");
+  //   }
+  // }, [inView, setActiveSection, timeOfLastClick]);
+
   return (
-    <section className="mb-28 max-w-[52rem] text-center sm:mb-0">
+    <section
+      ref={ref}
+      id="home"
+      className="mb-28 max-w-[52rem] text-center sm:mb-0 scroll-mt-[100rem]"
+    >
       <div className="flex items-center justify-center">
         <div className="relative">
           <motion.div
@@ -64,41 +81,37 @@ export default function Intro() {
       </motion.h1>
 
       <motion.div
-        className="color text-black flex flex-col sm:flex-row items-center justify-center gap-2   font-semibold"
+        className="flex flex-col items-center justify-center gap-2 font-semibold text-black color sm:flex-row"
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
       >
         <Link
           href="#contact"
-          className=" group bg-gray-900 text-white px-7 py-3 flex items-center gap-2 rounded-full outline-none font-medium mt-8 hover:bg-gray-800 transition-colors transform transition  
-          hover:scale-110 shadow-xl"
+          className="flex items-center gap-2 py-3 mt-8 font-medium text-white transition transition-colors transform bg-gray-900 rounded-full shadow-xl outline-none group px-7 hover:bg-gray-800 hover:scale-110"
         >
           Contact me here{" "}
-          <BsEnvelope className=" opacity-70 group-hover:translate-x-1 transition" />
+          <BsEnvelope className="transition opacity-70 group-hover:translate-x-1" />
         </Link>
 
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
-        hover:scale-110  shadow-xl"
+          className="flex items-center gap-2 py-3 mt-8 font-medium transition duration-500 transform bg-white rounded-full shadow-xl cursor-pointer group px-7 hover:underline hover:scale-110"
           href="/CV.pdf"
           download
         >
           이력서 다운로드{" "}
-          <HiDownload className=" opacity-60 group-hover:translate-y-1 transition" />
+          <HiDownload className="transition opacity-60 group-hover:translate-y-1" />
         </a>
         <a
-          className="group bg-white px-7 py-3 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer  hover:underline transform transition duration-500 
-        hover:scale-110 shadow-xl "
+          className="flex items-center gap-2 py-3 mt-8 font-medium transition duration-500 transform bg-white rounded-full shadow-xl cursor-pointer group px-7 hover:underline hover:scale-110 "
           href="/PORTFOLIO.pdf"
           download
         >
           포트폴리오 다운로드{" "}
-          <BsFileEarmarkPdfFill className="opacity-60 group-hover:translate-y-1 transition" />
+          <BsFileEarmarkPdfFill className="transition opacity-60 group-hover:translate-y-1" />
         </a>
         <a
-          className="bg-white  p-4  text-gray-700 flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-        hover:scale-110 shadow-xl "
+          className="flex items-center gap-2 p-4 mt-8 font-medium text-gray-700 transition duration-500 transform bg-white rounded-full shadow-xl cursor-pointer hover:scale-110 "
           href="https://dribbble.com/"
           target="_blank"
           rel="noreferrer"
@@ -106,8 +119,7 @@ export default function Intro() {
           <BsDribbble />
         </a>
         <a
-          className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-           hover:scale-110 shadow-xl "
+          className="flex items-center gap-2 p-4 mt-8 font-medium text-gray-700 transition duration-500 transform bg-white rounded-full shadow-xl cursor-pointer hover:scale-110 "
           href="https://www.behance.net"
           target="_blank"
           rel="noreferrer"
@@ -115,8 +127,7 @@ export default function Intro() {
           <BsBehance />
         </a>
         <a
-          className="bg-white p-4 text-gray-700  flex items-center gap-2 rounded-full font-medium mt-8 cursor-pointer transform transition duration-500 
-           hover:scale-110 shadow-xl  "
+          className="flex items-center gap-2 p-4 mt-8 font-medium text-gray-700 transition duration-500 transform bg-white rounded-full shadow-xl cursor-pointer hover:scale-110 "
           href="https://kr.pinterest.com/"
           target="_blank"
           rel="noreferrer"

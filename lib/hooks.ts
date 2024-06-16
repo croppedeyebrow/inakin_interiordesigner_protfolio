@@ -5,15 +5,15 @@ import type { SectionName } from "./types";
 
 type useSectionInViewProps = { section: string };
 
-export function useSectionInView(sectionName: useSectionInViewProps) {
-  const { ref, inView } = useInView({ threshold: 0.75 });
+export function useSectionInView(sectionName: SectionName, threshold = 0.75) {
+  const { ref, inView } = useInView({ threshold });
   const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
 
   useEffect(() => {
     if (inView && Date.now() - timeOfLastClick > 1000) {
-      setActiveSection("Home");
+      setActiveSection(sectionName);
     }
-  }, [inView, setActiveSection, timeOfLastClick]);
+  }, [inView, setActiveSection, timeOfLastClick, sectionName]);
 
   return { ref };
 }

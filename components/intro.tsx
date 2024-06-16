@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { type } from "os";
+
 import React, { useEffect } from "react";
 import {
   BsEnvelope,
@@ -13,20 +13,11 @@ import {
   BsFileEarmarkPdfFill,
 } from "react-icons/bs";
 import { HiDownload } from "react-icons/hi";
-import { useInView } from "react-intersection-observer";
-import { useActiveSectionContext } from "@/context/active_section_context";
+
 import { useSectionInView } from "@/lib/hooks";
 
 export default function Intro() {
-  const { ref } = useSectionInView({ section: "Home" });
-  // const { ref, inView } = useInView({ threshold: 0.75 });
-  // const { setActiveSection, timeOfLastClick } = useActiveSectionContext();
-
-  // useEffect(() => {
-  //   if (inView && Date.now() - timeOfLastClick > 1000) {
-  //     setActiveSection("Home");
-  //   }
-  // }, [inView, setActiveSection, timeOfLastClick]);
+  const { ref } = useSectionInView("Home", 0.75);
 
   return (
     <section
